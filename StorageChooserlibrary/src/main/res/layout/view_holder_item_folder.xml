@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_view_item_selector">
+
+    <ImageView
+        android:id="@+id/path_folder_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        app:srcCompat="@drawable/ic_folder" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="15dp"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/storage_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="16dp"
+        android:layout_toLeftOf="@+id/checkBox"
+        android:layout_toRightOf="@+id/path_folder_icon"
+        android:ellipsize="middle"
+        android:singleLine="true"
+        android:textSize="16sp"
+        tools:text="@string/app_name" />
+
+    <ProgressBar
+        android:id="@+id/storage_size"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/storage_name"
+        android:layout_below="@+id/storage_name"
+        android:layout_marginTop="10dp"
+        android:max="100"
+        android:progress="50" />
+
+
+</RelativeLayout>

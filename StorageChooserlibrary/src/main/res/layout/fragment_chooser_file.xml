@@ -1,0 +1,170 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context="cn.jninber.lib.filemanager.adapter.ChooserFileFragment">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/custom_path_header"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/colorPrimary">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_margin="8dp"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/back_button_holder"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/chevronBgColor">
+
+                    <ImageButton
+                        android:id="@+id/back_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@android:color/transparent"
+                        app:srcCompat="@drawable/ic_chevron_left_white" />
+
+                </RelativeLayout>
+
+
+                <!-- address bar -->
+                <RelativeLayout
+                    android:id="@+id/new_folder_button_holder"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/chevronBgColor"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/new_folder_iv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        app:srcCompat="@drawable/ic_add_white" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/path_chosen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="blahblahblah"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_above="@+id/select_button"
+            app:layout_constraintBottom_toTopOf="@id/new_folder_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/custom_path_header"
+            app:layout_constraintVertical_bias="0" />
+
+
+        <RelativeLayout
+            android:id="@+id/mLoading"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_above="@+id/select_button"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/mRecyclerView"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/custom_path_header"
+            app:layout_constraintTop_toTopOf="@+id/mRecyclerView"
+            app:layout_constraintVertical_bias="0">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/new_folder_view"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@color/colorPrimary"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/select_button">
+
+            <EditText
+                android:id="@+id/et_folder_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="16dp"
+                android:layout_toLeftOf="@+id/create_folder_button"
+                android:layout_toStartOf="@+id/create_folder_button"
+                android:backgroundTint="@color/pathLayoutBgColor"
+                android:maxLength="50"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@android:color/white"
+                android:textColorHint="@color/chevronBgColor"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/create_folder_button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:background="@null"
+                android:textColor="@android:color/white" />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/select_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@android:color/transparent"
+            android:text="选择"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</FrameLayout>
