@@ -37,12 +37,11 @@ import java.io.FileFilter
 object ChooserManager {
 
 
-    class Builder(var activity: AppCompatActivity) {
+    class Builder() {
         private val config: Config
 
         init {
             config = Config()
-            activity.supportFragmentManager
         }
 
         fun withFileFilter(collection: Collection<FileType>): Builder {
@@ -135,8 +134,8 @@ object ChooserManager {
                 rxPermissions.requestEach(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE).subscribe { permission ->
                     when {
                         permission.granted -> initStorageList(internalStoragePath)
-                        permission.shouldShowRequestPermissionRationale -> Toast.makeText(activity, "请打开对应的读写权限", Toast.LENGTH_SHORT).show()
-                        else -> Toast.makeText(activity, "请打开对应的读写权限", Toast.LENGTH_SHORT).show()
+                        permission.shouldShowRequestPermissionRationale -> Toast.makeText(activity, getString(R.string.permission_tips), Toast.LENGTH_SHORT).show()
+                        else -> Toast.makeText(activity, getString(R.string.permission_tips), Toast.LENGTH_SHORT).show()
                     }
                 }
             } else {

@@ -104,21 +104,21 @@ class FileManagerAdapter(var max: Int = Int.MAX_VALUE
                 val isChecked = itemView.checkBox.isChecked
                 val isMax = paths.size < max
                 onChangeListener?.onChange(file.path, isChecked)
-                Log.d("操作前 paths", "./gradlew app:dependenciessize=${paths.size} ")
+                Log.d(" paths", "./gradlew app:dependenciessize=${paths.size} ")
                 if (isChecked) {
                     Log.d("paths=action add", "path＝＝＝＝${file.path},name=${file.name} ")
                     if (isMax) {
                         paths.add(file.path)
                     } else {
                         itemView.checkBox.isChecked = !isChecked
-                        Toast.makeText(itemView.context, "你最多可以选择${max}个", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(itemView.context, "You can take the most${max}", Toast.LENGTH_SHORT).show()
                     }
                 } else {
                     paths.remove(file.path)
                     Log.d("paths=action remove", "path＝＝＝＝${file.path},name=${file.name} ")
                 }
 
-                Log.d("操作后 paths=", "size=${paths.size} ")
+                Log.d(" paths=", "size=${paths.size} ")
 
             }
             itemView.storage_size.visibility = if (file.isFile) View.GONE else View.VISIBLE

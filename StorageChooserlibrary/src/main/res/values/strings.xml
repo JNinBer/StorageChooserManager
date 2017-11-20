@@ -5,4 +5,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="choose_storage">Choose Storage</string>
+    <string name="permission_tips">请打开对应的读写权限</string>
 </resources>

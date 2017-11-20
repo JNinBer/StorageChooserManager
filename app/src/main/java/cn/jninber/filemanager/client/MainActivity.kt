@@ -2,8 +2,6 @@ package cn.jninber.filemanager.client
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
-import android.widget.Toast
 import cn.jninber.lib.filemanager.ChooserManager
 import cn.jninber.lib.filemanager.FileType
 import kotlinx.android.synthetic.main.activity_main.*
@@ -15,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val chooser = ChooserManager.Builder(this)
+        val chooser = ChooserManager.Builder()
                 .withFileFilter(mutableListOf(FileType.APK, FileType.EXCEL))
                 .setOnFileSelectListener { path -> paths.text = path }
                 .setOnMultipleSelectListener { pathList: List<String> ->
