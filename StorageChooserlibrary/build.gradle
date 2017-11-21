@@ -3,6 +3,9 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'org.jetbrains.dokka-android'
+apply plugin: 'maven-publish'
 android {
     compileSdkVersion 26
     defaultConfig {
@@ -23,6 +26,11 @@ android {
 
 
 }
+
+dokka {
+    outputFormat = 'html'
+    outputDirectory = "$buildDir/javadoc"
+}
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -38,37 +46,4 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
-buildscript {
-    ext.kotlin_version = '1.1.60'
-    ext.dokka_version = '0.9.7'
-    repositories {
-        mavenCentral()
-        jcenter()
-    }
-
-    dependencies {
-        /**
-         * for kotlin
-         */
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-
-        /**
-         * for jfrog
-         */
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
-
-        /**
-         * Do not use 4+
-         */
-//        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:3.2.0"
-        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:latest.release"
-    }
-}
-
-repositories {
-    mavenCentral()
-    jcenter()
-}
-
-//apply from:'../upload.gradle'
-apply from: 'kotlin-bintray.gradle'
+apply from: 'deploy.gradle'

@@ -18,7 +18,7 @@ enum class FileType(var extensions: String, @DrawableRes var extensionImg: Int) 
     APK("apk", R.drawable.ic_apk),
     ARCHIVE("zip,rar,gz,tar", R.drawable.ic_zip),
     DOC("doc", R.drawable.ic_doc),
-    EXCEL("xls", R.drawable.ic_excel),
+    EXCEL("xls,xlsx", R.drawable.ic_excel),
     PPT("ppt", R.drawable.ic_ppt),
     PDF("pdf", R.drawable.ic_pdf),
     TORRENT("torrent", R.drawable.ic_torrent),
